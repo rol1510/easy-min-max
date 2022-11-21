@@ -6,5 +6,7 @@ edition = "2021"
 authors = ["Roland Strasser <rol1510@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
+repository = "https://github.com/rol1510/min-max-macros"
+keywords = ["min", "max", "minimum", "maximum", "no_std"]
 
 [dependencies]
