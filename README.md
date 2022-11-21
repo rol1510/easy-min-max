@@ -1,5 +1,5 @@
 # easy-min-max
-`no_std` crate with macros to get the minimum and maximum. 
+Easy to use macros for min and max. Works with `no_std`
 
 ## Install
 ```toml
