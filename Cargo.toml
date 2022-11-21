@@ -7,6 +7,6 @@ authors = ["Roland Strasser <rol1510@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 repository = "https://github.com/rol1510/easy-min-max"
-keywords = ["min", "max", "minimum", "maximum", "no_std"]
+keywords = ["min", "max", "minimum", "maximum", "no_std", "macro", "macros"]
 
 [dependencies]
