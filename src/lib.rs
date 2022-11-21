@@ -1,3 +1,6 @@
+#![no_std]
+
+#[macro_export]
 macro_rules! min {
     ($a:expr) => {
         $a
@@ -14,6 +17,7 @@ macro_rules! min {
     };
 }
 
+#[macro_export]
 macro_rules! max {
     ($a:expr) => {
         $a
@@ -29,9 +33,6 @@ macro_rules! max {
         max!($a, max!( $($as),+ ))
     };
 }
-
-pub(crate) use max;
-pub(crate) use min;
 
 #[cfg(test)]
 mod tests {
