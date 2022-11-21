@@ -1,6 +1,6 @@
 [package]
 name = "easy-min-max"
-version = "0.1.0"
+version = "0.1.1"
 description = "Easy to use macros for min and max. Works with no_std"
 edition = "2021"
 authors = ["Roland Strasser <rol1510@users.noreply.github.com>"]
