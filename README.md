@@ -1,14 +1,14 @@
-# min-max-macros
+# easy-min-max
 `no_std` crate with macros to get the minimum and maximum. 
 
 ## Install
 ```toml
-min-max-macros = "0.1.0"
+easy-min-max = "0.1.0"
 ```
 
 ## Usage
 ```rust
-use min_max_macros::{max, min};
+use easy_min_max::{max, min};
 
 let result = min!(1, -2);
 assert_eq!(result, -2);

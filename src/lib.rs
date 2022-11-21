@@ -7,7 +7,7 @@
 //!
 //! ## Usage
 //! ```
-//! use min_max_macros::{max, min};
+//! use easy_min_max::{max, min};
 //!
 //! let result = min!(1, -2);
 //! assert_eq!(result, -2);
@@ -38,7 +38,7 @@
 /// # Example
 ///
 /// ```
-/// # #[macro_use] extern crate min_max_macros;
+/// # #[macro_use] extern crate easy_min_max;
 /// let a = 5;
 /// let b = 8;
 ///
@@ -72,7 +72,7 @@ macro_rules! min {
 /// # Example
 ///
 /// ```
-/// # #[macro_use] extern crate min_max_macros;
+/// # #[macro_use] extern crate easy_min_max;
 /// let a = 5;
 /// let b = 8;
 ///
