@@ -1,5 +1,51 @@
+//! `no_std` crate with macros to get the minimum and maximum.
+//!
+//! ## Install
+//! ```toml
+//! min-max-macros = "0.1.0"
+//! ```
+//!
+//! ## Usage
+//! ```
+//! use min_max_macros::{max, min};
+//!
+//! let result = min!(1, -2);
+//! assert_eq!(result, -2);
+//!
+//! /* Works with everything that supports the < and > operators */
+//! let result = max!(1.2, 4.4);
+//! assert_eq!(result, 4.4);
+//!
+//! let result = max!((1, 8), (1, 2));
+//! assert_eq!(result, (1, 8));
+//!
+//! /* Works with any number of arguments */
+//! let result = max!(1, 2, 3, 4, 5, 6, 7);
+//! assert_eq!(result, 7);
+//!
+//! let result = max!(1);
+//! assert_eq!(result, 1);
+//! ```
+
 #![no_std]
 
+/// Returns the smallest argument.
+///
+/// You can pass 1, 2, 3, or more arguments.
+///
+/// Will work with everything that can be compared with the < operator.
+///
+/// # Example
+///
+/// ```
+/// # #[macro_use] extern crate min_max_macros;
+/// let a = 5;
+/// let b = 8;
+///
+/// let minimum = min!(a, b);
+///
+/// assert_eq!(minimum, 5)
+/// ```
 #[macro_export]
 macro_rules! min {
     ($a:expr) => {
@@ -17,6 +63,23 @@ macro_rules! min {
     };
 }
 
+/// Returns the biggest argument.
+///
+/// You can pass 1, 2, 3, or more arguments.
+///
+/// Will work with everything that can be compared with the > operator.
+///
+/// # Example
+///
+/// ```
+/// # #[macro_use] extern crate min_max_macros;
+/// let a = 5;
+/// let b = 8;
+///
+/// let maximum = max!(a, b);
+///
+/// assert_eq!(maximum, 8)
+/// ```
 #[macro_export]
 macro_rules! max {
     ($a:expr) => {
@@ -66,25 +129,5 @@ mod tests {
         assert_eq!(max!(1, -2), 1);
         assert_eq!(max!(1.24, 4.4), 4.4);
         assert_eq!(max!((1, 8), (1, 2)), (1, 8));
-    }
-
-    #[test]
-    fn test_different_readme_example() {
-        let result = min!(1, -2);
-        assert_eq!(result, -2);
-
-        /* Works with everything that supports the < and > operators */
-        let result = max!(1.2, 4.4);
-        assert_eq!(result, 4.4);
-
-        let result = max!((1, 8), (1, 2));
-        assert_eq!(result, (1, 8));
-
-        /* Works with any number of arguments */
-        let result = max!(1, 2, 3, 4, 5, 6, 7);
-        assert_eq!(result, 7);
-
-        let result = max!(1);
-        assert_eq!(result, 1);
     }
 }
