@@ -1,4 +1,6 @@
-//! Easy to use macros for min and max. Works with `no_std`
+#![no_std]
+
+//! Easy to use macros for min, max and clamp. Works with `no_std`
 //!
 //! ## Install
 //! ```toml
@@ -7,27 +9,39 @@
 //!
 //! ## Usage
 //! ```
-//! use easy_min_max::{max, min};
+//! use easy_min_max::{min, max, clamp};
+//! ```
 //!
+//! Works with everything that supports the < and > operators
+//! ```
+//! # use easy_min_max::{min, max, clamp};
 //! let result = min!(1, -2);
 //! assert_eq!(result, -2);
 //!
-//! /* Works with everything that supports the < and > operators */
 //! let result = max!(1.2, 4.4);
 //! assert_eq!(result, 4.4);
 //!
 //! let result = max!((1, 8), (1, 2));
 //! assert_eq!(result, (1, 8));
+//! ```
 //!
-//! /* Works with any number of arguments */
+//! Works with any number of arguments
+//! ```
+//! # use easy_min_max::{min, max, clamp};
 //! let result = max!(1, 2, 3, 4, 5, 6, 7);
 //! assert_eq!(result, 7);
 //!
 //! let result = max!(1);
 //! assert_eq!(result, 1);
 //! ```
-
-#![no_std]
+//!
+//! Also includes a clamp macro
+//! ```
+//! # use easy_min_max::{min, max, clamp};
+//! let value = 16;
+//! let clamped = clamp!(value, 0, 10);
+//! assert_eq!(clamped, 10);
+//! ```
 
 /// Returns the smallest argument.
 ///
@@ -44,7 +58,7 @@
 ///
 /// let minimum = min!(a, b);
 ///
-/// assert_eq!(minimum, 5)
+/// assert_eq!(minimum, 5);
 /// ```
 #[macro_export]
 macro_rules! min {
@@ -78,7 +92,7 @@ macro_rules! min {
 ///
 /// let maximum = max!(a, b);
 ///
-/// assert_eq!(maximum, 8)
+/// assert_eq!(maximum, 8);
 /// ```
 #[macro_export]
 macro_rules! max {
@@ -94,6 +108,33 @@ macro_rules! max {
     };
     ($a: expr, $($as:expr),+) => {
         max!($a, max!( $($as),+ ))
+    };
+}
+
+/// clamps the value argument between lower and upper
+///
+/// # Example
+///
+/// ```
+/// # #[macro_use] extern crate easy_min_max;
+/// let value = 16;
+///
+/// let clamped = clamp!(value, 0, 10);
+///
+/// assert_eq!(clamped, 10);
+/// ```
+/// ```
+/// # #[macro_use] extern crate easy_min_max;
+/// let value = -16;
+///
+/// let clamped = clamp!(value, 0, 10);
+///
+/// assert_eq!(clamped, 0);
+/// ```
+#[macro_export]
+macro_rules! clamp {
+    ($value:expr, $lower:expr, $upper:expr) => {
+        min!($upper, max!($lower, $value))
     };
 }
 
@@ -122,6 +163,15 @@ mod tests {
 
         assert_eq!(max!(1, 2, 3), 3);
         assert_eq!(max!(1, 2, 3, 4), 4);
+    }
+
+    #[test]
+    fn test_clamp() {
+        assert_eq!(clamp!(2, 1, 5), 2);
+        assert_eq!(clamp!(1, 1, 5), 1);
+        assert_eq!(clamp!(0, 1, 5), 1);
+        assert_eq!(clamp!(5, 1, 5), 5);
+        assert_eq!(clamp!(6, 1, 5), 5);
     }
 
     #[test]

@@ -1,7 +1,7 @@
 [package]
 name = "easy-min-max"
 version = "0.1.1"
-description = "Easy to use macros for min and max. Works with no_std"
+description = "Easy to use macros for min, max and clamp. Works with no_std"
 edition = "2021"
 authors = ["Roland Strasser <rol1510@users.noreply.github.com>"]
 license = "MIT OR Apache-2.0"
