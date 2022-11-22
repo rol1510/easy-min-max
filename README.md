@@ -3,7 +3,7 @@ Easy to use macros for min, max and clamp. Works with `no_std`
 
 ## Install
 ```toml
-easy-min-max = "0.1.1"
+easy-min-max = "1.0.0"
 ```
 
 ## Usage

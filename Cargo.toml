@@ -1,6 +1,6 @@
 [package]
 name = "easy-min-max"
-version = "0.1.1"
+version = "1.0.0"
 description = "Easy to use macros for min, max and clamp. Works with no_std"
 edition = "2021"
 authors = ["Roland Strasser <rol1510@users.noreply.github.com>"]

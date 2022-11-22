@@ -4,7 +4,7 @@
 //!
 //! ## Install
 //! ```toml
-//! min-max-macros = "0.1.1"
+//! min-max-macros = "1.0.0"
 //! ```
 //!
 //! ## Usage
