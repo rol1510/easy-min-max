@@ -72,7 +72,7 @@ macro_rules! min {
             $b
         }
     };
-    ($a: expr, $($as:expr),+) => {
+    ($a:expr, $($as:expr),+) => {
         min!($a, min!( $($as),+ ))
     };
 }
@@ -106,7 +106,7 @@ macro_rules! max {
             $b
         }
     };
-    ($a: expr, $($as:expr),+) => {
+    ($a:expr, $($as:expr),+) => {
         max!($a, max!( $($as),+ ))
     };
 }
@@ -118,17 +118,13 @@ macro_rules! max {
 /// ```
 /// # #[macro_use] extern crate easy_min_max;
 /// let value = 16;
-///
 /// let clamped = clamp!(value, 0, 10);
-///
 /// assert_eq!(clamped, 10);
 /// ```
 /// ```
 /// # #[macro_use] extern crate easy_min_max;
 /// let value = -16;
-///
 /// let clamped = clamp!(value, 0, 10);
-///
 /// assert_eq!(clamped, 0);
 /// ```
 #[macro_export]
